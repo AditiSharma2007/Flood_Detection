@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Flood Detection: Production Deep Learning Pipeline
 
 This workspace contains the complete production-grade training pipeline and assets for flood image classification with domain generalization.
