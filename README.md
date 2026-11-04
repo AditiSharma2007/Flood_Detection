@@ -67,6 +67,3 @@ On the right-hand settings panel:
    - Generates activation heatmaps on misclassified samples to verify whether the model is focusing on flood debris or mistakenly flagging natural water bodies.
 6. **Holdout Evaluation:**
    - Full evaluation metrics: Accuracy, Precision, Recall, F1, ROC-AUC, PR-AUC, Confusion Matrix, FPR, and FNR.
-=======
-# Flood_Detection
->>>>>>> f7c83bc6cc9215c48a3ea0cc271bd887ab4208b6
