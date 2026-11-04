@@ -1,23 +1,26 @@
 {
-    "model_name": "MobileNetV2_Flood_Detector_Calibrated",
-    "test_accuracy": 0.9045801526717557,
-    "flooding_precision": 0.9090909090909091,
-    "flooding_recall": 0.9022556390977443,
-    "flooding_f1": 0.9056603773584906,
-    "roc_auc": 0.975811622078452,
-    "pr_auc": 0.9802160626786509,
-    "fpr": 0.09302325581395349,
-    "fnr": 0.09774436090225563,
+    "model_name": "MobileNetV2_Drone_Calibrated",
+    "test_accuracy": 0.9351145038167938,
+    "flooding_precision": 0.9202898550724637,
+    "flooding_recall": 0.9548872180451128,
+    "flooding_f1": 0.9372693726937269,
+    "roc_auc": 0.9842046977909891,
+    "pr_auc": 0.9862730634746409,
+    "fpr": 0.08527131782945736,
+    "fnr": 0.045112781954887216,
     "confusion_matrix": [
         [
-            120,
-            13
+            127,
+            6
         ],
         [
-            12,
-            117
+            11,
+            118
         ]
     ],
-    "hard_negative_water_count": 75,
-    "user_test_calibrated": true
+    "drone_flooded_count": 470,
+    "drone_normal_pools_count": 400,
+    "dark_hard_negatives_count": 300,
+    "water_hard_negatives_count": 75,
+    "drone_hard_negative_trained": true
 }

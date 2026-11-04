@@ -1,0 +1,32 @@
+=====================================================================
+  STARTING FLOOD DETECTION TRAINING ON DRONE + HARD NEGATIVES
+=====================================================================
+
+=================================================================
+DRONE & COMPREHENSIVE HARD-NEGATIVE FINE-TUNING PIPELINE
+Device: cuda:0 (NVIDIA GeForce RTX 2050)
+=================================================================
+
+Training Pool Summary:
+  - Total images:            4095
+  - Flooded (Class 0):       1938 (Drone aerial floods + Alley + Main)
+  - Normal / Negatives (1):  2157 (Drone pools/landscapes, dark/night, rivers, drainage)
+    * Drone Normal/Pools:    400
+    * Dark & Night Scenes:   300
+    * Rivers & Drainage:     75
+Holdout Benchmark Test Set:  262 images (133 Flood, 129 Normal)
+
+[+] Initializing MobileNetV2 Architecture...
+[+] Loading baseline weights from: c:\Users\Aditi Sharma\Downloads\Flood_Detection\models\flood_mobilenet_best.pt
+c:\Users\Aditi Sharma\Downloads\Flood_Detection\train_drone_and_hard_negatives.py:230: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.load_state_dict(torch.load(BEST_MODEL_PATH, map_location=device))
+
+=================================================================
+PRE-CALIBRATION BENCHMARK EVALUATION
+=================================================================
+Initial Test Accuracy: 90.46% | Initial Test Loss: 0.1995
+
+=================================================================
+STARTING FINE-TUNING (4 Epochs on Drone & Hard Negatives)
+=================================================================
+  Batch 30/128 - Loss: 0.5807 - Acc: 79.17%

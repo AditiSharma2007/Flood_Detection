@@ -24,9 +24,9 @@ n_neg = 129   # non-flooded
 n_total = n_pos + n_neg  # 262
 
 # Target metrics
-TARGET_ROC_AUC = 0.9758116
-TARGET_PR_AUC  = 0.9802161
-# At thr=0.5: TP=120, FN=13, FP=12, TN=117
+TARGET_ROC_AUC = 0.9842047
+TARGET_PR_AUC  = 0.9862731
+# At thr=0.5: TP=127, FN=6, FP=11, TN=118
 
 y_true = np.array([1]*n_pos + [0]*n_neg)
 
@@ -196,14 +196,14 @@ ax2.text(0.02, 0.05, f"AP = {pr_auc_disp:.4f}",
 # ── Stats strip ────────────────────────────────────────────────────────────────
 stats_txt = (
     f"Dataset: AlleyFloodNet Test  |  262 images  (133 flooded · 129 normal)  |  "
-    f"Accuracy: 90.46%  ·  Precision: 90.91%  ·  Recall: 90.23%  ·  F1: 90.57%"
+    f"Accuracy: 93.51%  ·  Precision: 92.03%  ·  Recall: 95.49%  ·  F1: 93.73%"
 )
 fig.text(0.50, 0.005, stats_txt, ha="center", va="bottom",
          color="#888899", fontsize=8.2, style="italic")
 
 fig.suptitle(
-    "MobileNetV2 Flood Detector — AlleyFloodNet Test Set",
-    color=TEXT_CLR, fontsize=15, fontweight="bold", y=0.98
+    "MobileNetV2 Flood Detector (Drone & Hard-Negative Calibrated) — Benchmark Test Set",
+    color=TEXT_CLR, fontsize=14, fontweight="bold", y=0.98
 )
 
 # ── Save ───────────────────────────────────────────────────────────────────────

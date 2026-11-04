@@ -1,0 +1,93 @@
+=================================================================
+DRONE & COMPREHENSIVE HARD-NEGATIVE FINE-TUNING PIPELINE
+Device: cuda:0 (NVIDIA GeForce RTX 2050)
+=================================================================
+
+Training Pool Summary:
+  - Total images:            4095
+  - Flooded (Class 0):       1938 (Drone aerial floods + Alley + Main)
+  - Normal / Negatives (1):  2157 (Drone pools/landscapes, dark/night, rivers, drainage)
+    * Drone Normal/Pools:    400
+    * Dark & Night Scenes:   300
+    * Rivers & Drainage:     75
+Holdout Benchmark Test Set:  262 images (133 Flood, 129 Normal)
+
+[+] Initializing MobileNetV2 Architecture...
+[+] Loading baseline weights from: c:\Users\Aditi Sharma\Downloads\Flood_Detection\models\flood_mobilenet_best.pt
+c:\Users\Aditi Sharma\Downloads\Flood_Detection\train_drone_and_hard_negatives.py:230: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.load_state_dict(torch.load(BEST_MODEL_PATH, map_location=device))
+
+=================================================================
+PRE-CALIBRATION BENCHMARK EVALUATION
+=================================================================
+Initial Test Accuracy: 90.46% | Initial Test Loss: 0.1995
+
+=================================================================
+STARTING FINE-TUNING (4 Epochs on Drone & Hard Negatives)
+=================================================================
+  Batch 15/128 - Loss: 0.7402 - Acc: 74.79%
+  Batch 30/128 - Loss: 0.5807 - Acc: 79.17%
+  Batch 45/128 - Loss: 0.4837 - Acc: 81.74%
+  Batch 60/128 - Loss: 0.4253 - Acc: 83.59%
+  Batch 75/128 - Loss: 0.3803 - Acc: 85.04%
+  Batch 90/128 - Loss: 0.3431 - Acc: 86.49%
+  Batch 105/128 - Loss: 0.3135 - Acc: 87.62%
+  Batch 120/128 - Loss: 0.2961 - Acc: 88.33%
+  Batch 128/128 - Loss: 0.2876 - Acc: 88.67%
+
+Epoch 1/4 [678.5s] - Train Loss: 0.2876, Train Acc: 88.67% | Test Loss: 0.1735, Test Acc: 93.13%
+  [+] Best model checkpoint saved to: c:\Users\Aditi Sharma\Downloads\Flood_Detection\models\flood_mobilenet_best.pt
+  Batch 15/128 - Loss: 0.1305 - Acc: 95.42%
+  Batch 30/128 - Loss: 0.1290 - Acc: 95.42%
+  Batch 45/128 - Loss: 0.1419 - Acc: 94.65%
+  Batch 60/128 - Loss: 0.1368 - Acc: 94.79%
+  Batch 75/128 - Loss: 0.1300 - Acc: 95.00%
+  Batch 90/128 - Loss: 0.1249 - Acc: 95.24%
+  Batch 105/128 - Loss: 0.1229 - Acc: 95.36%
+  Batch 120/128 - Loss: 0.1185 - Acc: 95.34%
+  Batch 128/128 - Loss: 0.1165 - Acc: 95.46%
+
+Epoch 2/4 [643.6s] - Train Loss: 0.1165, Train Acc: 95.46% | Test Loss: 0.1746, Test Acc: 93.51%
+  [+] Best model checkpoint saved to: c:\Users\Aditi Sharma\Downloads\Flood_Detection\models\flood_mobilenet_best.pt
+  Batch 15/128 - Loss: 0.0798 - Acc: 96.88%
+  Batch 30/128 - Loss: 0.0819 - Acc: 96.88%
+  Batch 45/128 - Loss: 0.0903 - Acc: 96.32%
+  Batch 60/128 - Loss: 0.0906 - Acc: 96.35%
+  Batch 75/128 - Loss: 0.0855 - Acc: 96.62%
+  Batch 90/128 - Loss: 0.0883 - Acc: 96.63%
+  Batch 105/128 - Loss: 0.0870 - Acc: 96.67%
+  Batch 120/128 - Loss: 0.0872 - Acc: 96.64%
+  Batch 128/128 - Loss: 0.0891 - Acc: 96.56%
+
+Epoch 3/4 [369.0s] - Train Loss: 0.0891, Train Acc: 96.56% | Test Loss: 0.1607, Test Acc: 92.75%
+  Batch 15/128 - Loss: 0.0855 - Acc: 96.46%
+  Batch 30/128 - Loss: 0.0740 - Acc: 97.08%
+  Batch 45/128 - Loss: 0.0869 - Acc: 96.74%
+  Batch 60/128 - Loss: 0.0847 - Acc: 96.67%
+  Batch 75/128 - Loss: 0.0887 - Acc: 96.46%
+  Batch 90/128 - Loss: 0.0883 - Acc: 96.56%
+  Batch 105/128 - Loss: 0.0885 - Acc: 96.55%
+  Batch 120/128 - Loss: 0.0854 - Acc: 96.72%
+  Batch 128/128 - Loss: 0.0846 - Acc: 96.75%
+
+Epoch 4/4 [314.9s] - Train Loss: 0.0846, Train Acc: 96.75% | Test Loss: 0.1633, Test Acc: 92.37%
+
+=================================================================
+FINAL BENCHMARK EVALUATION ON ALLEYFLOODNET TEST SET
+=================================================================
+c:\Users\Aditi Sharma\Downloads\Flood_Detection\train_drone_and_hard_negatives.py:326: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.load_state_dict(torch.load(BEST_MODEL_PATH, map_location=device))
+Final Test Accuracy:       93.51%
+Flooding Precision:        92.03%
+Flooding Recall:           95.49%
+Flooding F1-Score:         93.73%
+ROC-AUC:                   0.9842
+PR-AUC:                    0.9863
+False Positive Rate (FPR): 8.53%
+False Negative Rate (FNR): 4.51%
+Confusion Matrix: [[TP=127, FN=6], [FP=11, TN=118]]
+
+[+] Saved final complete model to: c:\Users\Aditi Sharma\Downloads\Flood_Detection\models\flood_detection_final.pt
+[+] Saved metrics report to: c:\Users\Aditi Sharma\Downloads\Flood_Detection\models\evaluation_metrics.json
+
+*** TRAINING AND CALIBRATION COMPLETED SUCCESSFULLY! ***
