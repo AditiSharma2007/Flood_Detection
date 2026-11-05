@@ -1,0 +1,1496 @@
+{
+    "test": {
+        "split": "test",
+        "total_samples": 70,
+        "flooded_samples": 42,
+        "normal_samples": 28,
+        "loss": 0.5463380865515579,
+        "accuracy": 0.8428571428571429,
+        "flooding_precision": 0.7924528301886793,
+        "flooding_recall": 1.0,
+        "flooding_f1": 0.8842105263157894,
+        "normal_precision": 1.0,
+        "normal_recall": 0.6071428571428571,
+        "normal_f1": 0.7555555555555555,
+        "roc_auc": 0.8945578231292517,
+        "pr_auc": 0.9038286243391094,
+        "confusion_matrix": {
+            "TP": 42,
+            "FN": 0,
+            "FP": 11,
+            "TN": 17
+        },
+        "fpr": 0.39285714285714285,
+        "fnr": 0.0,
+        "misclassified_count": 11,
+        "misclassified_samples": [
+            {
+                "file": "data/test/normal/sgdcgcr71378d9pah2bo1zfly4s6tpsy.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7117350697517395,
+                "normal_confidence": 0.2882648706436157
+            },
+            {
+                "file": "data/test/normal/village-roads (1).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5536062717437744,
+                "normal_confidence": 0.446393758058548
+            },
+            {
+                "file": "data/test/normal/py0lmakcta8flaxiwj8ypwn2f96o8op3.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9989890456199646,
+                "normal_confidence": 0.0010109415743499994
+            },
+            {
+                "file": "data/test/normal/tgwbcs1nbm8ybnvchil5vyf0o1nny38z.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.607248842716217,
+                "normal_confidence": 0.39275121688842773
+            },
+            {
+                "file": "data/test/normal/village-roads-at-summer-afternoon-in-baidyapur-west-bengal-india-village-scene-of-autumn-in-bounty-of-nature-under-wonderful-blue-sky-PRC9YF.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5677171945571899,
+                "normal_confidence": 0.43228280544281006
+            },
+            {
+                "file": "data/test/normal/yellow-and-black-flower-wallpaper-preview.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9422256946563721,
+                "normal_confidence": 0.05777425691485405
+            },
+            {
+                "file": "data/test/normal/village-roads.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.981614887714386,
+                "normal_confidence": 0.018385060131549835
+            },
+            {
+                "file": "data/test/normal/stock-photo-red-dirt-road-rural-roads-in-india-yellow-dirt-road-road-to-medinipur-road-to-purbamedinipur-noon-village-road-3163ff20-da4e-4f34-ba76-ff7ae13d9b8a.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9981517195701599,
+                "normal_confidence": 0.0018482571467757225
+            },
+            {
+                "file": "data/test/normal/Village_roads.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9360999464988708,
+                "normal_confidence": 0.06389999389648438
+            },
+            {
+                "file": "data/test/normal/village-road-through-agriculture-land-in-kerala-india-CR25AJ.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.98948073387146,
+                "normal_confidence": 0.010519254021346569
+            },
+            {
+                "file": "data/test/normal/roads-to-connect-every-rural-village-singh.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8594301342964172,
+                "normal_confidence": 0.14056983590126038
+            }
+        ]
+    },
+    "valid": {
+        "split": "valid",
+        "total_samples": 81,
+        "flooded_samples": 42,
+        "normal_samples": 39,
+        "loss": 0.5878635163713221,
+        "accuracy": 0.7901234567901234,
+        "flooding_precision": 0.7450980392156863,
+        "flooding_recall": 0.9047619047619048,
+        "flooding_f1": 0.8172043010752689,
+        "normal_precision": 0.8666666666666667,
+        "normal_recall": 0.6666666666666666,
+        "normal_f1": 0.7536231884057971,
+        "roc_auc": 0.8943833943833944,
+        "pr_auc": 0.8970071170474104,
+        "confusion_matrix": {
+            "TP": 38,
+            "FN": 4,
+            "FP": 13,
+            "TN": 26
+        },
+        "fpr": 0.3333333333333333,
+        "fnr": 0.09523809523809523,
+        "misclassified_count": 17,
+        "misclassified_samples": [
+            {
+                "file": "data/valid/normal/5dbfc0d8a310cf3e97a43423.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9816877245903015,
+                "normal_confidence": 0.018312258645892143
+            },
+            {
+                "file": "data/valid/normal/ia_100000000276.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5892961025238037,
+                "normal_confidence": 0.4107039272785187
+            },
+            {
+                "file": "data/valid/normal/garib-das-village-480.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8113793134689331,
+                "normal_confidence": 0.1886206716299057
+            },
+            {
+                "file": "data/valid/normal/kt42niuuzw4ljexnynmtlazbm3h0ktdk.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7043471932411194,
+                "normal_confidence": 0.295652836561203
+            },
+            {
+                "file": "data/valid/normal/0Y7A0761.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7602975964546204,
+                "normal_confidence": 0.23970243334770203
+            },
+            {
+                "file": "data/valid/normal/isgxh0t59qycnaycsope5oy60owh50sr.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9717850685119629,
+                "normal_confidence": 0.028214987367391586
+            },
+            {
+                "file": "data/valid/normal/du2awwunqsl5msdutqhax8t88xeep1vq.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6668500304222107,
+                "normal_confidence": 0.3331499993801117
+            },
+            {
+                "file": "data/valid/normal/85918549-sapa-vietnam-23rd-march-2017-roads-in-villages-of-sapa-vietnam-buildings-and-hills-can-be-seen-.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9921875,
+                "normal_confidence": 0.007812547497451305
+            },
+            {
+                "file": "data/valid/normal/9j8w8rt2pwofyna8f9g185xfwxe1oi7m.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9987516403198242,
+                "normal_confidence": 0.0012483579339459538
+            },
+            {
+                "file": "data/valid/normal/ia_100000000408.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9825724363327026,
+                "normal_confidence": 0.017427511513233185
+            },
+            {
+                "file": "data/valid/normal/images (8).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8093751668930054,
+                "normal_confidence": 0.19062481820583344
+            },
+            {
+                "file": "data/valid/normal/images (11).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9835394620895386,
+                "normal_confidence": 0.016460584476590157
+            },
+            {
+                "file": "data/valid/normal/9c561d4392.png",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5475744009017944,
+                "normal_confidence": 0.4524255394935608
+            },
+            {
+                "file": "data/valid/flooding/image_154.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.1370673030614853,
+                "normal_confidence": 0.8629327416419983
+            },
+            {
+                "file": "data/valid/flooding/image_112.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.36996686458587646,
+                "normal_confidence": 0.6300331354141235
+            },
+            {
+                "file": "data/valid/flooding/image_94.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.2746213376522064,
+                "normal_confidence": 0.7253786325454712
+            },
+            {
+                "file": "data/valid/flooding/image_81.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.46515294909477234,
+                "normal_confidence": 0.5348470211029053
+            }
+        ]
+    },
+    "train": {
+        "split": "train",
+        "total_samples": 322,
+        "flooded_samples": 168,
+        "normal_samples": 154,
+        "loss": 0.5572121323692452,
+        "accuracy": 0.7795031055900621,
+        "flooding_precision": 0.7136563876651982,
+        "flooding_recall": 0.9642857142857143,
+        "flooding_f1": 0.8202531645569621,
+        "normal_precision": 0.9368421052631579,
+        "normal_recall": 0.577922077922078,
+        "normal_f1": 0.714859437751004,
+        "roc_auc": 0.923778602350031,
+        "pr_auc": 0.9299277412770548,
+        "confusion_matrix": {
+            "TP": 162,
+            "FN": 6,
+            "FP": 65,
+            "TN": 89
+        },
+        "fpr": 0.42207792207792205,
+        "fnr": 0.03571428571428571,
+        "misclassified_count": 71,
+        "misclassified_samples": [
+            {
+                "file": "data/train/normal/f5aa23a5eae5632595b421ff0b679acf.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9943090677261353,
+                "normal_confidence": 0.005690847057849169
+            },
+            {
+                "file": "data/train/normal/images (1).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6208657622337341,
+                "normal_confidence": 0.3791342079639435
+            },
+            {
+                "file": "data/train/normal/ia_100000000313.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9706061482429504,
+                "normal_confidence": 0.029393916949629784
+            },
+            {
+                "file": "data/train/normal/gxhvfam0m4tmu38eo8kn6jm9o8h36kyy.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5049817562103271,
+                "normal_confidence": 0.49501824378967285
+            },
+            {
+                "file": "data/train/normal/ia_100000000299.png",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8282642364501953,
+                "normal_confidence": 0.1717357635498047
+            },
+            {
+                "file": "data/train/normal/ia_100000000264.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6247703433036804,
+                "normal_confidence": 0.3752295970916748
+            },
+            {
+                "file": "data/train/normal/depositphotos_23335090-stock-video-caucasian-female-friends-cycling-on.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6705535650253296,
+                "normal_confidence": 0.32944637537002563
+            },
+            {
+                "file": "data/train/normal/11167509.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8014352321624756,
+                "normal_confidence": 0.19856475293636322
+            },
+            {
+                "file": "data/train/normal/ia_100000000305.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.538223147392273,
+                "normal_confidence": 0.46177685260772705
+            },
+            {
+                "file": "data/train/normal/images (33).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6521322727203369,
+                "normal_confidence": 0.3478676974773407
+            },
+            {
+                "file": "data/train/normal/ia_100000000301.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9491032361984253,
+                "normal_confidence": 0.0508967824280262
+            },
+            {
+                "file": "data/train/normal/images (32).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5331422686576843,
+                "normal_confidence": 0.46685776114463806
+            },
+            {
+                "file": "data/train/normal/eciyslgzsrg2y4yinunm36ii4r58ulpq.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9365244507789612,
+                "normal_confidence": 0.06347557157278061
+            },
+            {
+                "file": "data/train/normal/images (28).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5732538104057312,
+                "normal_confidence": 0.426746129989624
+            },
+            {
+                "file": "data/train/normal/1of9pex5n8wjcmyuayjbwkr46alfy0bf.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6674706935882568,
+                "normal_confidence": 0.33252933621406555
+            },
+            {
+                "file": "data/train/normal/ia_100000000317.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.953889012336731,
+                "normal_confidence": 0.04611100256443024
+            },
+            {
+                "file": "data/train/normal/17ha7zhjbk26kh5xuguwqcn6dwdvhckg.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9046063423156738,
+                "normal_confidence": 0.09539373219013214
+            },
+            {
+                "file": "data/train/normal/ia_100000000288.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9861477017402649,
+                "normal_confidence": 0.013852303847670555
+            },
+            {
+                "file": "data/train/normal/o39bo09x98qhxi2vg16x9n34tdt0wnmj.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6542676687240601,
+                "normal_confidence": 0.34573230147361755
+            },
+            {
+                "file": "data/train/normal/pexels-photo-2983356.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9393860101699829,
+                "normal_confidence": 0.060614023357629776
+            },
+            {
+                "file": "data/train/normal/maxresdefault.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5973312258720398,
+                "normal_confidence": 0.4026687443256378
+            },
+            {
+                "file": "data/train/normal/images (19).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9869455695152283,
+                "normal_confidence": 0.013054420240223408
+            },
+            {
+                "file": "data/train/normal/nvkp05g5sn91a2oone3o57x2tw8g7imp.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7075964212417603,
+                "normal_confidence": 0.29240351915359497
+            },
+            {
+                "file": "data/train/normal/nature+life+of+bangladesh+(442).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.627865731716156,
+                "normal_confidence": 0.372134268283844
+            },
+            {
+                "file": "data/train/normal/images (7).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7095475196838379,
+                "normal_confidence": 0.2904524505138397
+            },
+            {
+                "file": "data/train/normal/5345387532_82b30b3905_b.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.845026433467865,
+                "normal_confidence": 0.15497353672981262
+            },
+            {
+                "file": "data/train/normal/50373783.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8706335425376892,
+                "normal_confidence": 0.12936650216579437
+            },
+            {
+                "file": "data/train/normal/images (6).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9499794244766235,
+                "normal_confidence": 0.05002061650156975
+            },
+            {
+                "file": "data/train/normal/ia_100000000215.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9027078747749329,
+                "normal_confidence": 0.09729210287332535
+            },
+            {
+                "file": "data/train/normal/mobilized-construction-1024x512.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9696821570396423,
+                "normal_confidence": 0.03031778708100319
+            },
+            {
+                "file": "data/train/normal/field-forest-roads-village-road-20034.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9927650094032288,
+                "normal_confidence": 0.007235024124383926
+            },
+            {
+                "file": "data/train/normal/DS8kdaPUMAAqXzL.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9768289923667908,
+                "normal_confidence": 0.023171046748757362
+            },
+            {
+                "file": "data/train/normal/dxeru8jy46so5glda6haz8gm8govoltu.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9722892045974731,
+                "normal_confidence": 0.02771078050136566
+            },
+            {
+                "file": "data/train/normal/500_F_245209754_k6VrPSvnGJkfiZoav5DKh6wNr6YGy4RZ.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8552061915397644,
+                "normal_confidence": 0.14479376375675201
+            },
+            {
+                "file": "data/train/normal/nt1dbmo1zy1bitszk41xyh9qvewqgtcp.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.824648380279541,
+                "normal_confidence": 0.17535161972045898
+            },
+            {
+                "file": "data/train/normal/img_20180511_1739581.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9699800610542297,
+                "normal_confidence": 0.030019937083125114
+            },
+            {
+                "file": "data/train/normal/images (9).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5243131518363953,
+                "normal_confidence": 0.47568678855895996
+            },
+            {
+                "file": "data/train/normal/images (5).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6973831057548523,
+                "normal_confidence": 0.3026168942451477
+            },
+            {
+                "file": "data/train/normal/images (4).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7137075662612915,
+                "normal_confidence": 0.2862924635410309
+            },
+            {
+                "file": "data/train/normal/gjl8aj7cdowh63ocfgbxn1fg1o6byyr7.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6796751618385315,
+                "normal_confidence": 0.32032477855682373
+            },
+            {
+                "file": "data/train/normal/images (16).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9265217185020447,
+                "normal_confidence": 0.07347825914621353
+            },
+            {
+                "file": "data/train/normal/ia_100000000356.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6287020444869995,
+                "normal_confidence": 0.3712979555130005
+            },
+            {
+                "file": "data/train/normal/838655-59001-vbgobfyxfu-1495694392.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7240079641342163,
+                "normal_confidence": 0.2759920060634613
+            },
+            {
+                "file": "data/train/normal/Munshiganj_village_roads.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9677254557609558,
+                "normal_confidence": 0.032274577766656876
+            },
+            {
+                "file": "data/train/normal/42483632.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9854428768157959,
+                "normal_confidence": 0.014557083137333393
+            },
+            {
+                "file": "data/train/normal/5790015-Village_roads-0.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9796625971794128,
+                "normal_confidence": 0.020337382331490517
+            },
+            {
+                "file": "data/train/normal/ia_100000000397.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9478713870048523,
+                "normal_confidence": 0.0521286241710186
+            },
+            {
+                "file": "data/train/normal/2_i_tp_0h_1534741675_5.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5942479968070984,
+                "normal_confidence": 0.4057520031929016
+            },
+            {
+                "file": "data/train/normal/images (36).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9990174770355225,
+                "normal_confidence": 0.0009825469460338354
+            },
+            {
+                "file": "data/train/normal/1457459474_3384031204.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9727193117141724,
+                "normal_confidence": 0.027280690148472786
+            },
+            {
+                "file": "data/train/normal/images (3).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9812514781951904,
+                "normal_confidence": 0.018748508766293526
+            },
+            {
+                "file": "data/train/normal/images (27).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5708016753196716,
+                "normal_confidence": 0.4291982650756836
+            },
+            {
+                "file": "data/train/normal/images (31).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8499937057495117,
+                "normal_confidence": 0.15000630915164948
+            },
+            {
+                "file": "data/train/normal/ia_100000000325.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6655211448669434,
+                "normal_confidence": 0.33447882533073425
+            },
+            {
+                "file": "data/train/normal/ia_100000000319.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6639145612716675,
+                "normal_confidence": 0.3360854983329773
+            },
+            {
+                "file": "data/train/normal/depositphotos_97275570-stock-photo-a-narrow-village-road.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8981500864028931,
+                "normal_confidence": 0.10184990614652634
+            },
+            {
+                "file": "data/train/normal/miwpena49mq7snbctf4hfi2jpevqpxzd.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9929597973823547,
+                "normal_confidence": 0.007040118332952261
+            },
+            {
+                "file": "data/train/normal/ia_100000000244.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7226681709289551,
+                "normal_confidence": 0.27733176946640015
+            },
+            {
+                "file": "data/train/normal/image1.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8256000280380249,
+                "normal_confidence": 0.17440000176429749
+            },
+            {
+                "file": "data/train/normal/ia_100000000297.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5060911774635315,
+                "normal_confidence": 0.4939088225364685
+            },
+            {
+                "file": "data/train/normal/0ouuqq1bu0f22d6rak5o6ys9zirqcdn5.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9039033055305481,
+                "normal_confidence": 0.0960967019200325
+            },
+            {
+                "file": "data/train/normal/1.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9896472096443176,
+                "normal_confidence": 0.010352849029004574
+            },
+            {
+                "file": "data/train/normal/1544199091_single_29.png",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7758631706237793,
+                "normal_confidence": 0.2241368293762207
+            },
+            {
+                "file": "data/train/normal/images (10).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9454680681228638,
+                "normal_confidence": 0.05453195050358772
+            },
+            {
+                "file": "data/train/normal/500_F_179731281_g9HyasaebMs2omZKV3UE4WuH5uFcso1P.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7126252055168152,
+                "normal_confidence": 0.2873747646808624
+            },
+            {
+                "file": "data/train/flooding/image_187.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.206687793135643,
+                "normal_confidence": 0.793312132358551
+            },
+            {
+                "file": "data/train/flooding/image_39.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.2023821771144867,
+                "normal_confidence": 0.7976177930831909
+            },
+            {
+                "file": "data/train/flooding/image_107.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.031157545745372772,
+                "normal_confidence": 0.9688424468040466
+            },
+            {
+                "file": "data/train/flooding/image_90.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.4848291873931885,
+                "normal_confidence": 0.5151708126068115
+            },
+            {
+                "file": "data/train/flooding/image_172.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.36693987250328064,
+                "normal_confidence": 0.6330601572990417
+            },
+            {
+                "file": "data/train/flooding/image_37.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.36719363927841187,
+                "normal_confidence": 0.6328063607215881
+            }
+        ]
+    },
+    "overall": {
+        "split": "overall",
+        "total_samples": 473,
+        "flooded_samples": 252,
+        "normal_samples": 221,
+        "loss": 0.5608518340540869,
+        "accuracy": 0.7906976744186046,
+        "flooding_precision": 0.7311178247734139,
+        "flooding_recall": 0.9603174603174603,
+        "flooding_f1": 0.8301886792452831,
+        "normal_precision": 0.9295774647887324,
+        "normal_recall": 0.5972850678733032,
+        "normal_f1": 0.7272727272727273,
+        "roc_auc": 0.9145658263305322,
+        "pr_auc": 0.9189715648208148,
+        "confusion_matrix": {
+            "TP": 242,
+            "FN": 10,
+            "FP": 89,
+            "TN": 132
+        },
+        "fpr": 0.40271493212669685,
+        "fnr": 0.03968253968253968,
+        "misclassified_count": 99,
+        "misclassified_samples": [
+            {
+                "file": "data/train/normal/f5aa23a5eae5632595b421ff0b679acf.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9943090677261353,
+                "normal_confidence": 0.005690847057849169
+            },
+            {
+                "file": "data/train/normal/images (1).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6208657622337341,
+                "normal_confidence": 0.3791342079639435
+            },
+            {
+                "file": "data/train/normal/ia_100000000313.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9706061482429504,
+                "normal_confidence": 0.029393916949629784
+            },
+            {
+                "file": "data/train/normal/gxhvfam0m4tmu38eo8kn6jm9o8h36kyy.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5049817562103271,
+                "normal_confidence": 0.49501824378967285
+            },
+            {
+                "file": "data/train/normal/ia_100000000299.png",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8282642364501953,
+                "normal_confidence": 0.1717357635498047
+            },
+            {
+                "file": "data/train/normal/ia_100000000264.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6247703433036804,
+                "normal_confidence": 0.3752295970916748
+            },
+            {
+                "file": "data/train/normal/depositphotos_23335090-stock-video-caucasian-female-friends-cycling-on.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6705535650253296,
+                "normal_confidence": 0.32944637537002563
+            },
+            {
+                "file": "data/train/normal/11167509.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8014352321624756,
+                "normal_confidence": 0.19856475293636322
+            },
+            {
+                "file": "data/train/normal/ia_100000000305.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.538223147392273,
+                "normal_confidence": 0.46177685260772705
+            },
+            {
+                "file": "data/train/normal/images (33).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6521322727203369,
+                "normal_confidence": 0.3478676974773407
+            },
+            {
+                "file": "data/train/normal/ia_100000000301.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9491032361984253,
+                "normal_confidence": 0.0508967824280262
+            },
+            {
+                "file": "data/train/normal/images (32).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5331422686576843,
+                "normal_confidence": 0.46685776114463806
+            },
+            {
+                "file": "data/train/normal/eciyslgzsrg2y4yinunm36ii4r58ulpq.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9365244507789612,
+                "normal_confidence": 0.06347557157278061
+            },
+            {
+                "file": "data/train/normal/images (28).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5732538104057312,
+                "normal_confidence": 0.426746129989624
+            },
+            {
+                "file": "data/train/normal/1of9pex5n8wjcmyuayjbwkr46alfy0bf.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6674706935882568,
+                "normal_confidence": 0.33252933621406555
+            },
+            {
+                "file": "data/train/normal/ia_100000000317.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.953889012336731,
+                "normal_confidence": 0.04611100256443024
+            },
+            {
+                "file": "data/train/normal/17ha7zhjbk26kh5xuguwqcn6dwdvhckg.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9046063423156738,
+                "normal_confidence": 0.09539373219013214
+            },
+            {
+                "file": "data/train/normal/ia_100000000288.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9861477017402649,
+                "normal_confidence": 0.013852303847670555
+            },
+            {
+                "file": "data/train/normal/o39bo09x98qhxi2vg16x9n34tdt0wnmj.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6542676687240601,
+                "normal_confidence": 0.34573230147361755
+            },
+            {
+                "file": "data/train/normal/pexels-photo-2983356.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9393860101699829,
+                "normal_confidence": 0.060614023357629776
+            },
+            {
+                "file": "data/train/normal/maxresdefault.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5973312258720398,
+                "normal_confidence": 0.4026687443256378
+            },
+            {
+                "file": "data/train/normal/images (19).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9869455695152283,
+                "normal_confidence": 0.013054420240223408
+            },
+            {
+                "file": "data/train/normal/nvkp05g5sn91a2oone3o57x2tw8g7imp.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7075964212417603,
+                "normal_confidence": 0.29240351915359497
+            },
+            {
+                "file": "data/train/normal/nature+life+of+bangladesh+(442).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.627865731716156,
+                "normal_confidence": 0.372134268283844
+            },
+            {
+                "file": "data/train/normal/images (7).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7095475196838379,
+                "normal_confidence": 0.2904524505138397
+            },
+            {
+                "file": "data/train/normal/5345387532_82b30b3905_b.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.845026433467865,
+                "normal_confidence": 0.15497353672981262
+            },
+            {
+                "file": "data/train/normal/50373783.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8706335425376892,
+                "normal_confidence": 0.12936650216579437
+            },
+            {
+                "file": "data/train/normal/images (6).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9499794244766235,
+                "normal_confidence": 0.05002061650156975
+            },
+            {
+                "file": "data/train/normal/ia_100000000215.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9027078747749329,
+                "normal_confidence": 0.09729210287332535
+            },
+            {
+                "file": "data/train/normal/mobilized-construction-1024x512.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9696821570396423,
+                "normal_confidence": 0.03031778708100319
+            },
+            {
+                "file": "data/train/normal/field-forest-roads-village-road-20034.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9927650094032288,
+                "normal_confidence": 0.007235024124383926
+            },
+            {
+                "file": "data/train/normal/DS8kdaPUMAAqXzL.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9768289923667908,
+                "normal_confidence": 0.023171046748757362
+            },
+            {
+                "file": "data/train/normal/dxeru8jy46so5glda6haz8gm8govoltu.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9722892045974731,
+                "normal_confidence": 0.02771078050136566
+            },
+            {
+                "file": "data/train/normal/500_F_245209754_k6VrPSvnGJkfiZoav5DKh6wNr6YGy4RZ.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8552061915397644,
+                "normal_confidence": 0.14479376375675201
+            },
+            {
+                "file": "data/train/normal/nt1dbmo1zy1bitszk41xyh9qvewqgtcp.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.824648380279541,
+                "normal_confidence": 0.17535161972045898
+            },
+            {
+                "file": "data/train/normal/img_20180511_1739581.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9699800610542297,
+                "normal_confidence": 0.030019937083125114
+            },
+            {
+                "file": "data/train/normal/images (9).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5243131518363953,
+                "normal_confidence": 0.47568678855895996
+            },
+            {
+                "file": "data/train/normal/images (5).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6973831057548523,
+                "normal_confidence": 0.3026168942451477
+            },
+            {
+                "file": "data/train/normal/images (4).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7137075662612915,
+                "normal_confidence": 0.2862924635410309
+            },
+            {
+                "file": "data/train/normal/gjl8aj7cdowh63ocfgbxn1fg1o6byyr7.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6796751618385315,
+                "normal_confidence": 0.32032477855682373
+            },
+            {
+                "file": "data/train/normal/images (16).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9265217185020447,
+                "normal_confidence": 0.07347825914621353
+            },
+            {
+                "file": "data/train/normal/ia_100000000356.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6287020444869995,
+                "normal_confidence": 0.3712979555130005
+            },
+            {
+                "file": "data/train/normal/838655-59001-vbgobfyxfu-1495694392.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7240079641342163,
+                "normal_confidence": 0.2759920060634613
+            },
+            {
+                "file": "data/train/normal/Munshiganj_village_roads.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9677254557609558,
+                "normal_confidence": 0.032274577766656876
+            },
+            {
+                "file": "data/train/normal/42483632.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9854428768157959,
+                "normal_confidence": 0.014557083137333393
+            },
+            {
+                "file": "data/train/normal/5790015-Village_roads-0.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9796625971794128,
+                "normal_confidence": 0.020337382331490517
+            },
+            {
+                "file": "data/train/normal/ia_100000000397.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9478713870048523,
+                "normal_confidence": 0.0521286241710186
+            },
+            {
+                "file": "data/train/normal/2_i_tp_0h_1534741675_5.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5942479968070984,
+                "normal_confidence": 0.4057520031929016
+            },
+            {
+                "file": "data/train/normal/images (36).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9990174770355225,
+                "normal_confidence": 0.0009825469460338354
+            },
+            {
+                "file": "data/train/normal/1457459474_3384031204.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9727193117141724,
+                "normal_confidence": 0.027280690148472786
+            },
+            {
+                "file": "data/train/normal/images (3).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9812514781951904,
+                "normal_confidence": 0.018748508766293526
+            },
+            {
+                "file": "data/train/normal/images (27).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5708016753196716,
+                "normal_confidence": 0.4291982650756836
+            },
+            {
+                "file": "data/train/normal/images (31).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8499937057495117,
+                "normal_confidence": 0.15000630915164948
+            },
+            {
+                "file": "data/train/normal/ia_100000000325.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6655211448669434,
+                "normal_confidence": 0.33447882533073425
+            },
+            {
+                "file": "data/train/normal/ia_100000000319.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6639145612716675,
+                "normal_confidence": 0.3360854983329773
+            },
+            {
+                "file": "data/train/normal/depositphotos_97275570-stock-photo-a-narrow-village-road.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8981500864028931,
+                "normal_confidence": 0.10184990614652634
+            },
+            {
+                "file": "data/train/normal/miwpena49mq7snbctf4hfi2jpevqpxzd.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9929597973823547,
+                "normal_confidence": 0.007040118332952261
+            },
+            {
+                "file": "data/train/normal/ia_100000000244.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7226681709289551,
+                "normal_confidence": 0.27733176946640015
+            },
+            {
+                "file": "data/train/normal/image1.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8256000280380249,
+                "normal_confidence": 0.17440000176429749
+            },
+            {
+                "file": "data/train/normal/ia_100000000297.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5060911774635315,
+                "normal_confidence": 0.4939088225364685
+            },
+            {
+                "file": "data/train/normal/0ouuqq1bu0f22d6rak5o6ys9zirqcdn5.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9039033055305481,
+                "normal_confidence": 0.0960967019200325
+            },
+            {
+                "file": "data/train/normal/1.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9896472096443176,
+                "normal_confidence": 0.010352849029004574
+            },
+            {
+                "file": "data/train/normal/1544199091_single_29.png",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7758631706237793,
+                "normal_confidence": 0.2241368293762207
+            },
+            {
+                "file": "data/train/normal/images (10).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9454680681228638,
+                "normal_confidence": 0.05453195050358772
+            },
+            {
+                "file": "data/train/normal/500_F_179731281_g9HyasaebMs2omZKV3UE4WuH5uFcso1P.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7126252055168152,
+                "normal_confidence": 0.2873747646808624
+            },
+            {
+                "file": "data/train/flooding/image_187.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.206687793135643,
+                "normal_confidence": 0.793312132358551
+            },
+            {
+                "file": "data/train/flooding/image_39.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.2023821771144867,
+                "normal_confidence": 0.7976177930831909
+            },
+            {
+                "file": "data/train/flooding/image_107.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.031157545745372772,
+                "normal_confidence": 0.9688424468040466
+            },
+            {
+                "file": "data/train/flooding/image_90.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.4848291873931885,
+                "normal_confidence": 0.5151708126068115
+            },
+            {
+                "file": "data/train/flooding/image_172.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.36693987250328064,
+                "normal_confidence": 0.6330601572990417
+            },
+            {
+                "file": "data/train/flooding/image_37.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.36719363927841187,
+                "normal_confidence": 0.6328063607215881
+            },
+            {
+                "file": "data/valid/normal/5dbfc0d8a310cf3e97a43423.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9816877245903015,
+                "normal_confidence": 0.018312258645892143
+            },
+            {
+                "file": "data/valid/normal/ia_100000000276.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5892961025238037,
+                "normal_confidence": 0.4107039272785187
+            },
+            {
+                "file": "data/valid/normal/garib-das-village-480.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8113793134689331,
+                "normal_confidence": 0.1886206716299057
+            },
+            {
+                "file": "data/valid/normal/kt42niuuzw4ljexnynmtlazbm3h0ktdk.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7043471932411194,
+                "normal_confidence": 0.295652836561203
+            },
+            {
+                "file": "data/valid/normal/0Y7A0761.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7602975964546204,
+                "normal_confidence": 0.23970243334770203
+            },
+            {
+                "file": "data/valid/normal/isgxh0t59qycnaycsope5oy60owh50sr.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9717850685119629,
+                "normal_confidence": 0.028214987367391586
+            },
+            {
+                "file": "data/valid/normal/du2awwunqsl5msdutqhax8t88xeep1vq.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.6668500304222107,
+                "normal_confidence": 0.3331499993801117
+            },
+            {
+                "file": "data/valid/normal/85918549-sapa-vietnam-23rd-march-2017-roads-in-villages-of-sapa-vietnam-buildings-and-hills-can-be-seen-.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9921875,
+                "normal_confidence": 0.007812547497451305
+            },
+            {
+                "file": "data/valid/normal/9j8w8rt2pwofyna8f9g185xfwxe1oi7m.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9987516403198242,
+                "normal_confidence": 0.0012483579339459538
+            },
+            {
+                "file": "data/valid/normal/ia_100000000408.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9825724363327026,
+                "normal_confidence": 0.017427511513233185
+            },
+            {
+                "file": "data/valid/normal/images (8).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8093751668930054,
+                "normal_confidence": 0.19062481820583344
+            },
+            {
+                "file": "data/valid/normal/images (11).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9835394620895386,
+                "normal_confidence": 0.016460584476590157
+            },
+            {
+                "file": "data/valid/normal/9c561d4392.png",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5475744009017944,
+                "normal_confidence": 0.4524255394935608
+            },
+            {
+                "file": "data/valid/flooding/image_154.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.1370673030614853,
+                "normal_confidence": 0.8629327416419983
+            },
+            {
+                "file": "data/valid/flooding/image_112.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.36996686458587646,
+                "normal_confidence": 0.6300331354141235
+            },
+            {
+                "file": "data/valid/flooding/image_94.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.2746213376522064,
+                "normal_confidence": 0.7253786325454712
+            },
+            {
+                "file": "data/valid/flooding/image_81.jpg",
+                "true_label": "Flooding",
+                "pred_label": "Normal",
+                "flood_confidence": 0.46515294909477234,
+                "normal_confidence": 0.5348470211029053
+            },
+            {
+                "file": "data/test/normal/sgdcgcr71378d9pah2bo1zfly4s6tpsy.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.7117350697517395,
+                "normal_confidence": 0.2882648706436157
+            },
+            {
+                "file": "data/test/normal/village-roads (1).jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5536062717437744,
+                "normal_confidence": 0.446393758058548
+            },
+            {
+                "file": "data/test/normal/py0lmakcta8flaxiwj8ypwn2f96o8op3.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9989890456199646,
+                "normal_confidence": 0.0010109415743499994
+            },
+            {
+                "file": "data/test/normal/tgwbcs1nbm8ybnvchil5vyf0o1nny38z.jpeg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.607248842716217,
+                "normal_confidence": 0.39275121688842773
+            },
+            {
+                "file": "data/test/normal/village-roads-at-summer-afternoon-in-baidyapur-west-bengal-india-village-scene-of-autumn-in-bounty-of-nature-under-wonderful-blue-sky-PRC9YF.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.5677171945571899,
+                "normal_confidence": 0.43228280544281006
+            },
+            {
+                "file": "data/test/normal/yellow-and-black-flower-wallpaper-preview.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9422256946563721,
+                "normal_confidence": 0.05777425691485405
+            },
+            {
+                "file": "data/test/normal/village-roads.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.981614887714386,
+                "normal_confidence": 0.018385060131549835
+            },
+            {
+                "file": "data/test/normal/stock-photo-red-dirt-road-rural-roads-in-india-yellow-dirt-road-road-to-medinipur-road-to-purbamedinipur-noon-village-road-3163ff20-da4e-4f34-ba76-ff7ae13d9b8a.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9981517195701599,
+                "normal_confidence": 0.0018482571467757225
+            },
+            {
+                "file": "data/test/normal/Village_roads.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.9360999464988708,
+                "normal_confidence": 0.06389999389648438
+            },
+            {
+                "file": "data/test/normal/village-road-through-agriculture-land-in-kerala-india-CR25AJ.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.98948073387146,
+                "normal_confidence": 0.010519254021346569
+            },
+            {
+                "file": "data/test/normal/roads-to-connect-every-rural-village-singh.jpg",
+                "true_label": "Normal",
+                "pred_label": "Flooding",
+                "flood_confidence": 0.8594301342964172,
+                "normal_confidence": 0.14056983590126038
+            }
+        ]
+    }
+}
