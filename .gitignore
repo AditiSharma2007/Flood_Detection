@@ -30,6 +30,10 @@ wheels/
 .installed.cfg
 *.egg
 
+# Local environment
+.env
+
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
+
 

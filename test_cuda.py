@@ -1,3 +1,5 @@
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 import torch
 print("CUDA Available:", torch.cuda.is_available(), flush=True)
 if torch.cuda.is_available():

@@ -1,3 +1,5 @@
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 """
 Generate ROC and Precision-Recall curves for AlleyFloodNet test set.
 Reconstructs score distributions from saved metrics (no torch needed).

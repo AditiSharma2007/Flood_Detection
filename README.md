@@ -1,69 +1,48 @@
 # Flood Detection: Production Deep Learning Pipeline
 
-This workspace contains the complete production-grade training pipeline and assets for flood image classification with domain generalization.
+This repository contains the complete production-grade PyTorch deep learning pipeline for flood classification across both ground-level and aerial/drone perspectives.
 
 ---
 
 ## 📁 Workspace Directory Structure
 
 ```
-Flood_Detection/
-├── kaggle_flood_detection_pipeline.ipynb   <-- Production Kaggle Notebook
-├── data/
-│   └── AlleyFloodNet/
-│       ├── flood_train_/
-│       │   ├── flooded/          (468 images)
-│       │   └── non_flooded/      (380 images)
-│       └── flood_test_/          (Holdout test benchmark - 262 images)
-│           ├── flooded/          (133 images)
-│           └── non_flooded/      (129 images)
-├── weights/
-│   └── mobilenet_1_0_224_tf_no_top.h5    (Offline ImageNet pretrained weights)
+flood_detection/
+├── models/
+│   ├── flood_mobilenet_best.pt           <-- Single production model checkpoint (PyTorch state_dict, 9.47 MB)
+│   ├── evaluation_metrics.json           <-- Holdout benchmark metrics
+│   ├── improved_benchmark_comparison.json<-- Comprehensive multi-dataset evaluation metrics
+│   ├── confusion_matrix.png              <-- Confusion Matrix plot
+│   └── gradcam_analysis.png              <-- Grad-CAM explainability heatmaps
+├── data/                                 <-- Training & evaluation datasets (in .gitignore)
+├── predict.py                            <-- 1-Click prediction script for single images
+├── test_model_on_floodnet.py             <-- FloodNet UAV evaluation benchmark
+├── test_model_on_zip.py                  <-- External test benchmark
+├── gradcam.py                            <-- Grad-CAM explainability visualization
+├── FINAL_PROJECT_REPORT.md               <-- Full benchmark performance report
+├── requirements.txt                      <-- Python dependencies
 └── README.md
 ```
 
 ---
 
-## 🚀 How to Run on Kaggle (Step-by-Step)
+## ⚡ Quick Start: Running Predictions
 
-### Step 1: Open Kaggle & Create a New Notebook
-1. Go to [kaggle.com](https://www.kaggle.com) and log in.
-2. Click **Create** $\rightarrow$ **New Notebook**.
+To run flood prediction on any image (ground or aerial perspective):
 
-### Step 2: Upload Your Notebook
-1. In the notebook editor, click **File** (top left menu) $\rightarrow$ **Import Notebook**.
-2. Select `kaggle_flood_detection_pipeline.ipynb` from this folder (`Downloads/Flood_Detection/`).
+```powershell
+.\.venv\Scripts\python.exe predict.py "path\to\image.jpg"
+```
 
-### Step 3: Attach Datasets
-Click **+ Add Input** (top right of Kaggle notebook) and attach:
-1. **Flood Classification Dataset** (by `dhawalsrivastava2583`).
-2. **AlleyFloodNet** (by `seonyseony`).
-3. *(Optional if Internet is off)*: **mobilenet-v1-imagenet-weights** (by `aditisharma2007`).
-
-### Step 4: Configure Hardware Accelerator
-On the right-hand settings panel:
-* **Accelerator:** Choose **GPU T4 x2** (or GPU P100).
-* **Internet:** Toggle **ON** (allows automatic weight downloads).
-* **Language:** Python 3.
-
-### Step 5: Run the Notebook
-* Click **Run All** (or run cell-by-cell).
-* Estimated runtime on Tesla T4: **35–40 minutes**.
+The script uses multi-scale ensemble inference and outputs:
+* Classification: `FLOODING DETECTED` or `NORMAL / NON-FLOOD`
+* Class Confidence: exact percentages for Flooding vs. Normal
 
 ---
 
-## 📊 Pipeline Architecture & Key Highlights
+## 📊 Model Performance Highlights
 
-1. **Leakage-Safe Partitioning:**
-   - Main dataset: 80% train (10,435 images) / 20% validation (2,609 images) with stratified sampling.
-   - AlleyFloodNet test set (262 images) is strictly held out.
-2. **Dynamic Class Weighting:**
-   - Automatically balances the 2.48 : 1 ratio between flood and non-flood images.
-3. **Data Augmentation:**
-   - Random horizontal flips, rotations ($\pm 10^\circ$), zoom, and contrast adjustments prevent the network from memorizing simple water textures.
-4. **Domain Balancing:**
-   - 50/50 balanced sampling between general flood imagery and alleyway floods during fine-tuning.
-5. **Grad-CAM Explainability:**
-   - Generates activation heatmaps on misclassified samples to verify whether the model is focusing on flood debris or mistakenly flagging natural water bodies.
-6. **Holdout Evaluation:**
-   - Full evaluation metrics: Accuracy, Precision, Recall, F1, ROC-AUC, PR-AUC, Confusion Matrix, FPR, and FNR.
+* **Model Architecture:** MobileNetV2 with custom dual-dropout classification head
+* **Ground-Level Accuracy (AlleyFloodNet Test):** **92.37%** (ROC-AUC: 0.9851)
+* **Aerial / Drone Accuracy (FloodNet UAV Test):** **83.48%** (ROC-AUC: 0.9214)
+* **Natural Water False-Alarm Mitigation:** 100% rejection on swimming pools & calm water bodies
