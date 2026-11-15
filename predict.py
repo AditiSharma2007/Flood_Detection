@@ -13,6 +13,8 @@ import torchvision.transforms.functional as TF
 
 from torchvision import transforms, models
 
+from lighting_utils import lighting_views, luminance_stats, needs_lighting_boost
+
 
 
 # Set UTF-8 encoding
@@ -135,8 +137,13 @@ def predict(image_path):
     with Image.open(image_path) as img:
         img_rgb = img.convert("RGB")
 
-    # ── Multi-scale ensemble inference ───────────────────────────────────────
-    crops = _make_crops(img_rgb)
+    mean_y, std_y = luminance_stats(img_rgb)
+    views = lighting_views(img_rgb)
+
+    # ── Multi-scale + lighting TTA ───────────────────────────────────────────
+    crops = []
+    for view in views:
+        crops.extend(_make_crops(view))
     batch = torch.stack(crops).to(device)   # (N, 3, 224, 224)
 
     with torch.no_grad():
@@ -163,6 +170,11 @@ def predict(image_path):
         print(f"✅ RESULT: NORMAL / NON-FLOOD ({normal_prob:.2f}% confidence)")
 
     print(f"Detailed Probabilities: Flood={flood_prob:.2f}%, Normal={normal_prob:.2f}%")
+    if needs_lighting_boost(img_rgb):
+        print(
+            f"Lighting: low brightness/contrast "
+            f"(Y mean={mean_y:.0f}, std={std_y:.0f}) — CLAHE TTA applied"
+        )
 
     print("=" * 50)
 

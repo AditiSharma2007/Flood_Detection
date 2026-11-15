@@ -43,6 +43,8 @@ from torch.utils.data import Dataset, DataLoader, WeightedRandomSampler
 
 from torchvision import transforms, models
 
+from lighting_utils import RandomLowLightContrast
+
 
 
 # Set fixed seeds for reproducibility
@@ -253,7 +255,11 @@ train_transform = transforms.Compose([
 
     transforms.RandomRotation(degrees=10),
 
-    transforms.ColorJitter(brightness=0.15, contrast=0.15, saturation=0.15),
+    RandomLowLightContrast(p=0.45),
+
+    transforms.ColorJitter(brightness=0.35, contrast=0.35, saturation=0.15),
+
+    transforms.RandomAutocontrast(p=0.25),
 
     transforms.ToTensor(),
 

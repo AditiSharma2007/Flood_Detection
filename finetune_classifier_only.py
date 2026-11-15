@@ -77,7 +77,7 @@ print(f"  FloodNet split: train={len(fn_train)}, aerial-val={len(fn_val)}", flus
 # ── Collect AlleyFloodNet ─────────────────────────────────────────────────────
 def collect_alley(split_prefix):
     items = []
-    for lbl, folder_name in [(1, "flooded"), (0, "non_flooded")]:
+    for lbl, folder_name in [(0, "flooded"), (1, "non_flooded")]:
         for suffix in ["", "_"]:
             folder = os.path.join(ALLEY, split_prefix + suffix, folder_name)
             if os.path.exists(folder):
@@ -251,4 +251,5 @@ print(f"\n── Summary ──────────────────�
 print(f"Baseline:  ground={base_ground_acc:.2f}%  aerial={base_aerial_acc:.2f}%", flush=True)
 print(f"Best:      ground={best_ground_acc:.2f}%  aerial={best_aerial_acc:.2f}%", flush=True)
 print(f"Model: {MODEL_PATH}", flush=True)
+
 

@@ -67,7 +67,7 @@ print(f"  FloodNet: {len(fn_labeled)} | Flood={flood_fn} Normal={normal_fn}", fl
 # ── Collect AlleyFloodNet ─────────────────────────────────────────────────────
 def collect_alley(split_prefix):
     items = []
-    for lbl, folder_name in [(1, "flooded"), (0, "non_flooded")]:
+    for lbl, folder_name in [(0, "flooded"), (1, "non_flooded")]:
         for suffix in ["", "_"]:
             folder = os.path.join(ALLEY, split_prefix + suffix, folder_name)
             if os.path.exists(folder):
@@ -218,3 +218,4 @@ for epoch in range(1, EPOCHS + 1):
         print(f"  ✅ Saved best model (val={val_acc:.2f}%)", flush=True)
 
 print(f"\nDone. Best val acc: {best_val_acc:.2f}%", flush=True)
+

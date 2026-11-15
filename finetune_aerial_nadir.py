@@ -89,7 +89,7 @@ print(f"  Flood: {flood_count}, Normal: {normal_count}")
 def collect_alley(split_prefix):
     """Collect from AlleyFloodNet train/test splits."""
     items = []
-    for lbl, folder_name in [(1, "flooded"), (0, "non_flooded")]:
+    for lbl, folder_name in [(0, "flooded"), (1, "non_flooded")]:
         folder = os.path.join(ALLEY, split_prefix, folder_name)
         if not os.path.exists(folder):
             # try alternate naming
@@ -265,4 +265,5 @@ for epoch in range(1, EPOCHS + 1):
 
 print(f"\nPhase 5 complete. Best val acc: {best_val_acc:.2f}%")
 print(f"Model saved to: {MODEL_PATH}")
+
 

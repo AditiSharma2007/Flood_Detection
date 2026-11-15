@@ -1,0 +1,110 @@
+{
+  "checkpoint": "D:\\flood_detection\\models\\flood_mobilenet_best.pt",
+  "device": "cpu",
+  "preprocessing": "resize 224x224, ImageNet mean/std",
+  "backbone": "MobileNetV2 + dual-dropout classifier (1280->64->2)",
+  "domain_adaptation": "supervised fine-tune on AlleyFloodNet target streets (not adversarial DA)",
+  "alleyfloodnet_holdout": {
+    "n": 261,
+    "n_flood": 129,
+    "n_normal": 132,
+    "accuracy": 0.9080459770114943,
+    "flooding_precision": 0.9338842975206612,
+    "flooding_recall": 0.875968992248062,
+    "flooding_f1": 0.904,
+    "normal_precision": 0.8857142857142857,
+    "normal_recall": 0.9393939393939394,
+    "normal_f1": 0.9117647058823529,
+    "fpr": 0.06060606060606061,
+    "fnr": 0.12403100775193798,
+    "confusion_matrix": {
+      "TP": 113,
+      "FN": 16,
+      "FP": 8,
+      "TN": 124
+    },
+    "classification_report": "              precision    recall  f1-score   support\n\n       Flood     0.9339    0.8760    0.9040       129\n   Non-Flood     0.8857    0.9394    0.9118       132\n\n    accuracy                         0.9080       261\n   macro avg     0.9098    0.9077    0.9079       261\nweighted avg     0.9095    0.9080    0.9079       261\n",
+    "roc_auc": 0.9614164904862579,
+    "pr_auc": 0.9643526664919917
+  },
+  "hard_negative_water": [
+    {
+      "file": "sunset_lake.jpg",
+      "expected": "Non-Flood",
+      "pred": "Non-Flood",
+      "flood_pct": 23.82906675338745,
+      "normal_pct": 76.17093324661255,
+      "correct": true
+    },
+    {
+      "file": "city_river.jpg",
+      "expected": "Non-Flood",
+      "pred": "Non-Flood",
+      "flood_pct": 27.866247296333313,
+      "normal_pct": 72.13375270366669,
+      "correct": true
+    },
+    {
+      "file": "waterfall_lagoon.jpg",
+      "expected": "Non-Flood",
+      "pred": "Non-Flood",
+      "flood_pct": 35.91207265853882,
+      "normal_pct": 64.08792734146118,
+      "correct": true
+    },
+    {
+      "file": "eiffel_tower.jpg",
+      "expected": "Non-Flood",
+      "pred": "Non-Flood",
+      "flood_pct": 32.069990038871765,
+      "normal_pct": 67.93000996112823,
+      "correct": true
+    },
+    {
+      "file": "user_normal_river.jpg",
+      "expected": "Non-Flood",
+      "pred": "Non-Flood",
+      "flood_pct": 17.671911418437958,
+      "normal_pct": 82.32808858156204,
+      "correct": true
+    },
+    {
+      "file": "user_code_screenshot.png",
+      "expected": "Non-Flood",
+      "pred": "Non-Flood",
+      "flood_pct": 17.693613469600677,
+      "normal_pct": 82.30638653039932,
+      "correct": true
+    }
+  ],
+  "hard_negative_correct": 6,
+  "hard_negative_total": 6,
+  "user_flood": [
+    {
+      "file": "user_flood_1.webp",
+      "expected": "Flood",
+      "pred": "Non-Flood",
+      "flood_pct": 24.905456602573395,
+      "correct": false
+    },
+    {
+      "file": "user_flood_2.webp",
+      "expected": "Flood",
+      "pred": "Flood",
+      "flood_pct": 61.103177070617676,
+      "correct": true
+    }
+  ],
+  "other_test_images": [
+    {
+      "file": "Screenshot 2026-10-31 033447.png",
+      "pred": "Non-Flood",
+      "flood_pct": 9.30308923125267
+    },
+    {
+      "file": "Screenshot 2026-10-31 033726.png",
+      "pred": "Non-Flood",
+      "flood_pct": 13.892893493175507
+    }
+  ]
+}
