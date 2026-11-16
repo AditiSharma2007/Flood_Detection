@@ -19,7 +19,6 @@ import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader, WeightedRandomSampler
 from torchvision import transforms, models
 from PIL import Image
-from lighting_utils import RandomLowLightContrast
 
 sys.stdout.reconfigure(encoding='utf-8')
 random.seed(42); np.random.seed(42); torch.manual_seed(42)
@@ -77,9 +76,7 @@ train_tf = transforms.Compose([
     transforms.Resize((256, 256)),
     transforms.RandomCrop(224),
     transforms.RandomHorizontalFlip(),
-    RandomLowLightContrast(p=0.4),
-    transforms.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.15),
-    transforms.RandomAutocontrast(p=0.2),
+    transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.15),
     transforms.ToTensor(),
     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
 ])

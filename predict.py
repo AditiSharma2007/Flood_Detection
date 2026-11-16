@@ -126,34 +126,56 @@ detector = load_detector()
 
 def predict(image_path):
 
+    # Normalize and clean quotes if passed from shell
+    image_path = os.path.expanduser(image_path.strip('"\''))
+
     if not os.path.exists(image_path):
-
         print(f"File not found: {image_path}")
-
         return
 
-
-
-    with Image.open(image_path) as img:
-        img_rgb = img.convert("RGB")
+    try:
+        with Image.open(image_path) as img:
+            img_rgb = img.convert("RGB")
+    except OSError as e:
+        if e.errno == 22 or "cloud" in str(e).lower():
+            print("=" * 60)
+            print(f"❌ Error loading image: {image_path}")
+            print("This file is a Microsoft OneDrive 'Files On-Demand' cloud placeholder")
+            print("and is not currently downloaded to your local drive.")
+            print("\nHow to fix:")
+            print("1. Right-click the file in Windows File Explorer and select:")
+            print("   'Always keep on this device'")
+            print("2. Or make sure OneDrive is running and signed in.")
+            print("=" * 60)
+        else:
+            print(f"❌ Failed to open image ({e.__class__.__name__}): {e}")
+        return
 
     mean_y, std_y = luminance_stats(img_rgb)
     views = lighting_views(img_rgb)
 
-    # ── Multi-scale + lighting TTA ───────────────────────────────────────────
-    crops = []
-    for view in views:
-        crops.extend(_make_crops(view))
-    batch = torch.stack(crops).to(device)   # (N, 3, 224, 224)
+    # ── Inference: Primary Full-Scene + Multi-View Context ─────────────────
+    # Primary view: full image at model resolution
+    main_tensor = eval_transform(img_rgb).unsqueeze(0).to(device)
 
     with torch.no_grad():
-        logits = detector(batch)             # (N, 2)
-        # Average softmax probabilities across all crops (max-vote alternative)
-        probs_all = torch.softmax(logits, dim=1)  # (N, 2)
-        probs = probs_all.mean(dim=0)             # (2,)
-
-        flood_prob  = probs[0].item() * 100
-        normal_prob = probs[1].item() * 100
+        main_logits = detector(main_tensor)
+        main_probs = torch.softmax(main_logits, dim=1)[0]
+        
+        # Optional multi-crop ensemble for scale validation
+        crops = []
+        for view in views:
+            crops.extend(_make_crops(view))
+        batch = torch.stack(crops).to(device)
+        crop_logits = detector(batch)
+        crop_probs = torch.softmax(crop_logits, dim=1).mean(dim=0)
+        
+        # Weighted decision: 70% primary full scene, 30% ensemble context
+        # This prevents zoomed-in crops (e.g. roof tiles) from overriding full flood scenes
+        final_probs = 0.70 * main_probs + 0.30 * crop_probs
+        
+        flood_prob  = final_probs[0].item() * 100
+        normal_prob = final_probs[1].item() * 100
 
 
 
