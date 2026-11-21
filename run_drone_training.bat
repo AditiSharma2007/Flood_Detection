@@ -5,8 +5,8 @@ echo =====================================================================
 echo   STARTING FLOOD DETECTION TRAINING ON DRONE + HARD NEGATIVES
 echo =====================================================================
 echo.
-cd /d "c:\Users\Aditi Sharma\Downloads\Flood_Detection"
-"D:\Flood_Detection_Data\venv\Scripts\python.exe" -u train_drone_and_hard_negatives.py
+cd /d "%~dp0"
+python -u train_drone_and_hard_negatives.py
 echo.
 echo =====================================================================
 echo   TRAINING COMPLETE!

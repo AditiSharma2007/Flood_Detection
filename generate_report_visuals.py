@@ -1,17 +1,15 @@
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+if "MPLCONFIGDIR" not in os.environ:
+    os.environ["MPLCONFIGDIR"] = "/tmp/matplotlib"
 
 import sys
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 import json
-
 import numpy as np
-
 from PIL import Image
-
-
-
-sys.stdout.reconfigure(encoding='utf-8')
 
 
 
@@ -267,7 +265,7 @@ model.classifier = nn.Sequential(
 
 )
 
-model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
+model.load_state_dict(torch.load(MODEL_PATH, map_location=device, weights_only=True))
 
 model.to(device)
 
@@ -299,7 +297,7 @@ target_layer = model.features[-1]
 
 target_layer.register_forward_hook(forward_hook)
 
-target_layer.register_backward_hook(backward_hook)
+target_layer.register_full_backward_hook(backward_hook)
 
 
 
@@ -375,23 +373,21 @@ def compute_gradcam(img_path):
 
 
 
-# Test on 4 representative samples: 2 normal alley, 2 flooded alley
+# Test on representative samples: normal alley, flooded alley
+local_test_base = os.path.join(BASE_DIR, "data", "AlleyFloodNet", "flood_test_")
+sample_normal_dir = os.path.join(local_test_base, "non_flooded") if os.path.exists(os.path.join(local_test_base, "non_flooded")) else r"D:\Flood_Detection_Data\AlleyFloodNet\flood_test_\non_flooded"
+sample_flood_dir = os.path.join(local_test_base, "flooded") if os.path.exists(os.path.join(local_test_base, "flooded")) else r"D:\Flood_Detection_Data\AlleyFloodNet\flood_test_\flooded"
 
-sample_normal_dir = r"D:\Flood_Detection_Data\AlleyFloodNet\flood_test_\non_flooded"
-
-sample_flood_dir = r"D:\Flood_Detection_Data\AlleyFloodNet\flood_test_\flooded"
-
-
-
-norm_files = [os.path.join(sample_normal_dir, f) for f in os.listdir(sample_normal_dir)[:2]]
-
-flood_files = [os.path.join(sample_flood_dir, f) for f in os.listdir(sample_flood_dir)[:2]]
-
+norm_files = [os.path.join(sample_normal_dir, f) for f in os.listdir(sample_normal_dir)[:2]] if os.path.exists(sample_normal_dir) else []
+flood_files = [os.path.join(sample_flood_dir, f) for f in os.listdir(sample_flood_dir)[:2]] if os.path.exists(sample_flood_dir) else []
 all_samples = [(f, "Normal") for f in norm_files] + [(f, "Flooding") for f in flood_files]
 
+if not all_samples:
+    test_img_dir = os.path.join(BASE_DIR, "test_images")
+    if os.path.exists(test_img_dir):
+        all_samples = [(os.path.join(test_img_dir, f), "Sample") for f in os.listdir(test_img_dir)[:4] if f.lower().endswith(('.jpg', '.png', '.webp'))]
 
-
-fig, axes = plt.subplots(4, 3, figsize=(12, 14), dpi=150)
+fig, axes = plt.subplots(len(all_samples), 3, figsize=(12, 3.5 * len(all_samples)), dpi=150)
 
 
 

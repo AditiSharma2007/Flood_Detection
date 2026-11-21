@@ -17,9 +17,11 @@ from PIL import Image, ImageEnhance
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-AIFLOOD_ZIP = r"c:\Users\Aditi Sharma\Downloads\AIFloodSense.zip"
-DRONE_ZIP = r"c:\Users\Aditi Sharma\Downloads\archive (2).zip"
-DEST_BASE = r"D:\Flood_Detection_Data\drone_and_hard_negatives"
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(PROJECT_ROOT, "data")
+AIFLOOD_ZIP = os.environ.get("AIFLOOD_ZIP", os.path.join(DATA_DIR, "AIFloodSense.zip"))
+DRONE_ZIP = os.environ.get("DRONE_ZIP", os.path.join(DATA_DIR, "archive (2).zip"))
+DEST_BASE = os.environ.get("DEST_BASE", os.path.join(DATA_DIR, "drone_and_hard_negatives"))
 
 FLOODED_DIR = os.path.join(DEST_BASE, "flooded")
 NON_FLOODED_DIR = os.path.join(DEST_BASE, "non_flooded")

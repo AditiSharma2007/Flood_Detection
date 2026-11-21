@@ -62,22 +62,15 @@ print("=" * 65)
 
 
 # Paths
-
-BASE_DIR = r"D:\Flood_Detection_Data"
-
-OUTPUT_DIR = r"c:\Users\Aditi Sharma\Downloads\Flood_Detection\models"
-
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.environ.get("FLOOD_DATA_DIR", os.path.join(PROJECT_ROOT, "data"))
+OUTPUT_DIR = os.path.join(PROJECT_ROOT, "models")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
-
-
 
 BEST_MODEL_PATH = os.path.join(OUTPUT_DIR, "flood_mobilenet_best.pt")
 
-
-
 WATER_NEGATIVES_DIR = os.path.join(BASE_DIR, "water_hard_negatives")
-
-TEST_IMAGES_DIR = r"c:\Users\Aditi Sharma\Downloads\Flood_Detection\test_images"
+TEST_IMAGES_DIR = os.path.join(PROJECT_ROOT, "test_images")
 
 
 

@@ -35,14 +35,14 @@ print(f"Device: {DEVICE}")
 FLOOD_CLASSES = {1, 3, 5}  # building-flooded, road-flooded, water
 
 def get_floodnet_label(mask_path):
-    """Return 1 (flood) or 0 (normal) based on mask pixel classes."""
+    """Return 0 (flood) or 1 (normal) based on mask pixel classes."""
     try:
         mask = Image.open(mask_path)
         colors = mask.getcolors(maxcolors=50)
         if colors is None:
-            return 1  # too many colors → water-heavy → flood
+            return 0  # too many colors → water-heavy → flood (Class 0)
         pixel_classes = {c[1] if isinstance(c[1], int) else c[1][0] for c in colors}
-        return 1 if pixel_classes & FLOOD_CLASSES else 0
+        return 0 if pixel_classes & FLOOD_CLASSES else 1
     except Exception:
         return -1
 
@@ -79,7 +79,7 @@ for img_p, mask_p in fn_all:
     if lbl < 0:
         continue
     fn_labeled.append((img_p, lbl))
-    if lbl == 1:
+    if lbl == 0:
         flood_count += 1
     else:
         normal_count += 1
@@ -89,22 +89,21 @@ print(f"  Flood: {flood_count}, Normal: {normal_count}")
 def collect_alley(split_prefix):
     """Collect from AlleyFloodNet train/test splits."""
     items = []
-    for lbl, folder_name in [(1, "flooded"), (0, "non_flooded")]:
-        folder = os.path.join(ALLEY, split_prefix, folder_name)
-        if not os.path.exists(folder):
-            # try alternate naming
-            folder = os.path.join(ALLEY, split_prefix + "_", folder_name)
-        if os.path.exists(folder):
-            for f in os.listdir(folder):
-                if f.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
-                    items.append((os.path.join(folder, f), lbl))
+    for lbl, folder_name in [(0, "flooded"), (1, "non_flooded")]:
+        for suffix in ["", "_"]:
+            folder = os.path.join(ALLEY, split_prefix + suffix, folder_name)
+            if os.path.exists(folder):
+                for f in os.listdir(folder):
+                    if f.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
+                        items.append((os.path.join(folder, f), lbl))
+                break
     return items
 
-alley_train = collect_alley("flood_train") + collect_alley("flood_train_")
-alley_val   = collect_alley("flood_val")   + collect_alley("flood_val_")
+alley_train = collect_alley("flood_train")
+alley_val   = collect_alley("flood_val")
 # Fall back: use test set for val if no val split
 if len(alley_val) == 0:
-    alley_val = collect_alley("flood_test") + collect_alley("flood_test_")
+    alley_val = collect_alley("flood_test")
 
 print(f"  AlleyFloodNet train: {len(alley_train)}, val: {len(alley_val)}")
 

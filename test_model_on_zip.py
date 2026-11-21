@@ -23,7 +23,8 @@ import matplotlib.pyplot as plt
 # -----------------------------------------------------------------------------
 # Configuration
 # -----------------------------------------------------------------------------
-ZIP_PATH = r"D:\data.zip"
+DEFAULT_ZIP_PATH = os.environ.get("FLOOD_ZIP_PATH", os.path.join(os.path.dirname(__file__), "data", "data.zip"))
+ZIP_PATH = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_ZIP_PATH
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "models", "flood_mobilenet_best.pt")
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "models", "zip_eval_results")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -260,6 +261,11 @@ def plot_results(all_results, output_dir):
 # Main Execution
 # -----------------------------------------------------------------------------
 def main():
+    if not os.path.exists(ZIP_PATH):
+        print(f"Error: Zip file not found at: {ZIP_PATH}")
+        print("Usage: python test_model_on_zip.py <path_to_data.zip>")
+        return
+
     model = load_model(MODEL_PATH)
     splits = index_zip_dataset(ZIP_PATH)
 
