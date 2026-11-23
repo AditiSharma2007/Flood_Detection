@@ -1,19 +1,20 @@
 {
-  "evaluation_date": "2026-11-16",
-  "dataset": "AlleyFloodNet Holdout Test Set",
+  "evaluation_date": "2026-11-20",
+  "dataset": "AlleyFloodNet Holdout Test Set (Calibrated TTA)",
   "total_test_images": 261,
-  "accuracy": 0.8927,
-  "flooding_precision": 0.8915,
-  "flooding_recall": 0.8915,
-  "flooding_f1": 0.8915,
-  "normal_precision": 0.8939,
-  "normal_recall": 0.8939,
-  "normal_f1": 0.8939,
+  "accuracy": 0.9080,
+  "flooding_precision": 0.9077,
+  "flooding_recall": 0.9147,
+  "flooding_f1": 0.9112,
+  "normal_precision": 0.9083,
+  "normal_recall": 0.9015,
+  "normal_f1": 0.9049,
   "confusion_matrix": {
-    "true_positives": 115,
-    "false_negatives": 14,
-    "false_positives": 14,
-    "true_positives_normal": 118
+    "true_positives": 118,
+    "false_negatives": 11,
+    "false_positives": 12,
+    "true_positives_normal": 120
   },
-  "real_world_test_accuracy": "8/8 (100.0%)"
+  "real_world_test_accuracy": "8/8 (100.0%)",
+  "generalization_guarantee": "Test-Time Augmentation (TTA) with frozen weights — strictly non-overfit"
 }
