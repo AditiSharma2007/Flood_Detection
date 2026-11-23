@@ -1,98 +1,43 @@
+#!/usr/bin/env python3
+"""
+Grad-CAM Explainability Visualizer for Flood Detection.
+Generates publication-quality 3-panel decision heatmaps.
+"""
+
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+if "MPLCONFIGDIR" not in os.environ:
+    os.environ["MPLCONFIGDIR"] = "/tmp/matplotlib"
+
 import sys
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
+import argparse
 import numpy as np
 import matplotlib
-matplotlib.use('Agg') # Headless rendering for maximum speed
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from PIL import Image
-
-sys.stdout.reconfigure(encoding='utf-8')
-
 import torch
-import torch.nn as nn
-from torchvision import transforms, models
 
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "models", "flood_mobilenet_best.pt")
+from src.model import load_flood_detector, get_device
+from src.transforms import get_eval_transform
+from src.gradcam import GradCAM, make_cam_overlay
 
-eval_transform = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-])
-
-class GradCAM:
-    def __init__(self, model, target_layer):
-        self.model = model
-        self.target_layer = target_layer
-        self.activation = None
-        self.hook = self.target_layer.register_forward_hook(self._hook_fn)
-
-    def _hook_fn(self, module, input, output):
-        self.activation = output
-        output.retain_grad()
-
-    def generate(self, input_tensor, class_idx=None):
-        self.model.zero_grad()
-        output = self.model(input_tensor)
-        probs = torch.softmax(output, dim=1)[0]
-
-        if class_idx is None:
-            class_idx = torch.argmax(output, dim=1).item()
-
-        score = output[0, class_idx]
-        score.backward()
-
-        gradients = self.activation.grad[0].cpu().data.numpy() # (1280, 7, 7)
-        activations = self.activation[0].cpu().data.numpy()     # (1280, 7, 7)
-
-        # Global average pooling on gradients -> channel weights
-        weights = np.mean(gradients, axis=(1, 2)) # (1280,)
-
-        # Weighted combination of feature activation maps
-        cam = np.zeros(activations.shape[1:], dtype=np.float32) # (7, 7)
-        for i, w in enumerate(weights):
-            cam += w * activations[i]
-
-        # ReLU: keep only features with positive contribution
-        cam = np.maximum(cam, 0)
-
-        # Normalize to [0, 1]
-        max_val = np.max(cam)
-        if max_val > 0:
-            cam = cam / max_val
-
-        return cam, probs, class_idx
-
-    def close(self):
-        self.hook.remove()
-
-def load_detector():
-    model = models.mobilenet_v2(weights=None)
-    in_features = model.classifier[1].in_features
-    model.classifier = nn.Sequential(
-        nn.Dropout(p=0.4),
-        nn.Linear(in_features, 64),
-        nn.ReLU(inplace=True),
-        nn.Dropout(p=0.2),
-        nn.Linear(64, 2)
-    )
-    if os.path.exists(MODEL_PATH):
-        model.load_state_dict(torch.load(MODEL_PATH, map_location=device, weights_only=True))
-    model.to(device)
-    model.eval()
-    return model
-
-def explain_prediction(image_path, output_dir="gradcam_outputs"):
+def explain_prediction(image_path: str, output_dir: str = "gradcam_outputs", device: torch.device = None):
     if not os.path.exists(image_path):
         print(f"Error: File not found: {image_path}", flush=True)
         return None
 
+    if device is None:
+        device = get_device()
+
     os.makedirs(output_dir, exist_ok=True)
-    model = load_detector()
+    model = load_flood_detector(device=device)
     target_layer = model.features[-1]
     cam_engine = GradCAM(model, target_layer)
+    eval_transform = get_eval_transform()
 
     with Image.open(image_path) as img:
         orig_img = img.convert("RGB")
@@ -102,24 +47,13 @@ def explain_prediction(image_path, output_dir="gradcam_outputs"):
     cam, probs, pred_class = cam_engine.generate(input_tensor)
     cam_engine.close()
 
-    flood_prob = probs[0].item() * 100
-    normal_prob = probs[1].item() * 100
+    flood_prob = probs[0].item() * 100.0
+    normal_prob = probs[1].item() * 100.0
     is_flood = (pred_class == 0)
 
-    # Resize CAM to original image dimensions
-    cam_pil = Image.fromarray((cam * 255).astype(np.uint8)).resize((w, h), Image.Resampling.BILINEAR)
-    cam_norm = np.array(cam_pil) / 255.0
+    cam_norm, overlay_pil = make_cam_overlay(orig_img, cam, alpha=0.45)
 
-    # Apply JET colormap using matplotlib
-    cmap = matplotlib.colormaps['jet']
-    heatmap_rgba = cmap(cam_norm)
-    heatmap_rgb = (heatmap_rgba[:, :, :3] * 255).astype(np.uint8)
-    heatmap_pil = Image.fromarray(heatmap_rgb)
-
-    # Blend original image and heatmap (45% opacity)
-    overlay_pil = Image.blend(orig_img, heatmap_pil, alpha=0.45)
-
-    # Render publication-quality 3-panel figure
+    # Render 3-panel figure
     fig, axes = plt.subplots(1, 3, figsize=(15, 5))
 
     axes[0].imshow(orig_img)
@@ -138,8 +72,10 @@ def explain_prediction(image_path, output_dir="gradcam_outputs"):
     axes[2].set_title(f"3. Decision Overlay ({confidence:.1f}% Conf)", fontsize=12, fontweight='bold', color=color_tag)
     axes[2].axis('off')
 
-    plt.suptitle(f"Grad-CAM Explainability | Predicted: {status_str} (Flood: {flood_prob:.1f}%, Normal: {normal_prob:.1f}%)",
-                 fontsize=13, fontweight='bold', y=0.98)
+    plt.suptitle(
+        f"Grad-CAM Explainability | Predicted: {status_str} (Flood: {flood_prob:.1f}%, Normal: {normal_prob:.1f}%)",
+        fontsize=13, fontweight='bold', y=0.98
+    )
     plt.tight_layout()
 
     base_name = os.path.splitext(os.path.basename(image_path))[0]
@@ -160,9 +96,33 @@ def explain_prediction(image_path, output_dir="gradcam_outputs"):
 
     return out_path
 
-if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        explain_prediction(sys.argv[1])
+def main():
+    parser = argparse.ArgumentParser(description="Grad-CAM Explainability Visualizer")
+    parser.add_argument("image_path", nargs="?", default=None, help="Path to input image")
+    parser.add_argument("--output-dir", type=str, default="gradcam_outputs", help="Output directory for heatmaps")
+    parser.add_argument("--device", type=str, default="auto", choices=["auto", "cuda", "mps", "cpu"], help="Inference device")
+
+    args = parser.parse_args()
+
+    target_img = args.image_path
+    if target_img is not None:
+        target_img = target_img.strip("'\"")
+    if target_img is None:
+        sample_candidates = [
+            os.path.join("test_images", "Screenshot 2026-10-31 033726.png"),
+            os.path.join("test_images", "user_flood_1.webp"),
+            os.path.join("test_images", "user_flood_2.webp")
+        ]
+        for c in sample_candidates:
+            if os.path.exists(c):
+                target_img = c
+                break
+
+    if target_img and os.path.exists(target_img):
+        device = get_device(args.device)
+        explain_prediction(target_img, output_dir=args.output_dir, device=device)
     else:
-        sample_img = r"test_images\Screenshot 2026-10-31 033726.png"
-        explain_prediction(sample_img)
+        print("No valid test image found. Please provide an image path.")
+
+if __name__ == "__main__":
+    main()

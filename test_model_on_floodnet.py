@@ -341,6 +341,11 @@ def main():
 
     all_samples = test_samples + val_samples
 
+    if not all_samples:
+        print(f"Warning: No FloodNet images found at: {FLOODNET_DIR}")
+        print("Please download and extract FloodNet-Supervised_v1.0 to data/FloodNet to evaluate.")
+        return
+
     results = {}
     if test_samples:
         m_test, _ = evaluate_samples(model, test_samples, "test")

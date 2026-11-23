@@ -10,8 +10,12 @@ Uses the saved best model checkpoint (flood_mobilenet_best.pt).
 
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+if "MPLCONFIGDIR" not in os.environ:
+    os.environ["MPLCONFIGDIR"] = "/tmp/matplotlib"
 
 import sys
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 import numpy as np
 
@@ -173,7 +177,7 @@ model.classifier = nn.Sequential(
 
 )
 
-model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
+model.load_state_dict(torch.load(MODEL_PATH, map_location=device, weights_only=True))
 
 model = model.to(device)
 

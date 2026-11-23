@@ -39,9 +39,9 @@ def get_floodnet_label(mask_path):
         mask = Image.open(mask_path)
         colors = mask.getcolors(maxcolors=50)
         if colors is None:
-            return 1
+            return 0  # water-heavy -> flood (Class 0)
         pixel_classes = {c[1] if isinstance(c[1], int) else c[1][0] for c in colors}
-        return 1 if pixel_classes & FLOOD_CLASSES else 0
+        return 0 if pixel_classes & FLOOD_CLASSES else 1
     except Exception:
         return -1
 
@@ -50,21 +50,22 @@ print("Collecting FloodNet labels…", flush=True)
 img_dir  = os.path.join(FLOODNET, "train", "train-org-img")
 mask_dir = os.path.join(FLOODNET, "train", "train-label-img")
 fn_labeled = []
-for fname in os.listdir(img_dir):
-    if not fname.lower().endswith((".jpg", ".jpeg", ".png")):
-        continue
-    img_p = os.path.join(img_dir, fname)
-    stem  = fname.rsplit(".", 1)[0]
-    mask_p = os.path.join(mask_dir, stem + "_lab.png")
-    if not os.path.exists(mask_p):
-        mask_p = os.path.join(mask_dir, stem + ".png")
-    if os.path.exists(mask_p):
-        lbl = get_floodnet_label(mask_p)
-        if lbl >= 0:
-            fn_labeled.append((img_p, lbl))
+if os.path.exists(img_dir) and os.path.exists(mask_dir):
+    for fname in os.listdir(img_dir):
+        if not fname.lower().endswith((".jpg", ".jpeg", ".png")):
+            continue
+        img_p = os.path.join(img_dir, fname)
+        stem  = fname.rsplit(".", 1)[0]
+        mask_p = os.path.join(mask_dir, stem + "_lab.png")
+        if not os.path.exists(mask_p):
+            mask_p = os.path.join(mask_dir, stem + ".png")
+        if os.path.exists(mask_p):
+            lbl = get_floodnet_label(mask_p)
+            if lbl >= 0:
+                fn_labeled.append((img_p, lbl))
 
-flood_fn  = sum(1 for _, l in fn_labeled if l == 1)
-normal_fn = sum(1 for _, l in fn_labeled if l == 0)
+flood_fn  = sum(1 for _, l in fn_labeled if l == 0)
+normal_fn = sum(1 for _, l in fn_labeled if l == 1)
 print(f"  FloodNet train: {len(fn_labeled)} | Flood={flood_fn} Normal={normal_fn}", flush=True)
 
 # Separate FloodNet into train (80%) and aerial-val (20%)

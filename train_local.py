@@ -88,11 +88,9 @@ print("=" * 60)
 
 
 # Paths Configuration
-
-BASE_DIR = r"D:\Flood_Detection_Data"
-
-OUTPUT_DIR = r"c:\Users\Aditi Sharma\Downloads\Flood_Detection\models"
-
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.environ.get("FLOOD_DATA_DIR", os.path.join(PROJECT_ROOT, "data"))
+OUTPUT_DIR = os.path.join(PROJECT_ROOT, "models")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
